@@ -39,10 +39,12 @@ I would need to write a new test case to check for the 30-day deletion system, a
 
 ## Week 8 — Reproduction & solution planning
 
-**Reproduction commit link:** [link to commit documenting the reproduced issue]
+**Reproduction commit link:** https://github.com/anthonyle1/pathreview/commit/eb3dd4fc8da32c4244912066f22102dcf492f4ec
 
 **Reproduction summary:**
 [1–2 sentences: How did you reproduce the issue? What did you observe?]
+I reproduced the issue by following the user workflow to "share" the link they provided. The link is able to be shared, but when opening the link to an incognito tab that is signed out, the user is prompted to log-in instead of viewing the shared review page.
+
 
 **PLAN.md link:** [link to PLAN.md in your fork]
 

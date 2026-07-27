@@ -33,7 +33,7 @@ export const ReviewPage: React.FC = () => {
 
     // TODO: GENERATE UNIQUE LINK TO PUBLICLY SHARE
 
-    const url = window.location.href // random link is already generated
+    const url = window.location.href // need to generate NEW link
     navigator.clipboard.writeText(url).then(() => {
       alert('Review link copied to clipboard!')
     })
