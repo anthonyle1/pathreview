@@ -42,13 +42,12 @@ I would need to write a new test case to check for the 30-day deletion system, a
 **Reproduction commit link:** https://github.com/anthonyle1/pathreview/commit/eb3dd4fc8da32c4244912066f22102dcf492f4ec
 
 **Reproduction summary:**
-[1–2 sentences: How did you reproduce the issue? What did you observe?]
 I reproduced the issue by following the user workflow to "share" the link they provided. The link is able to be shared, but when opening the link to an incognito tab that is signed out, the user is prompted to log-in instead of viewing the shared review page.
 
 
-**PLAN.md link:** [link to PLAN.md in your fork]
+**PLAN.md link:** https://github.com/anthonyle1/pathreview/blob/feat/101-review-copy-link/PLAN.md
 
 **Walkthrough video (recommended):** [link to your Loom video, ≤2 min — recommended, not graded]
 
 **Blockers or open questions:**
-[Anything you're still uncertain about going into Week 9, or leave blank]
+How to handle link regeneration + privacy? 
