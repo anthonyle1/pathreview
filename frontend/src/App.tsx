@@ -77,6 +77,9 @@ function App() {
           }
         />
         <Route
+
+        // TODO: HANDLE PUBLIC VIEW
+
           path="/reviews/:reviewId"
           element={
             <ProtectedRoute>

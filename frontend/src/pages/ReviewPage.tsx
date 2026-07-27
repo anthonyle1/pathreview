@@ -30,7 +30,10 @@ export const ReviewPage: React.FC = () => {
   const currentReview = fullReview || statusReview
 
   const handleShare = () => {
-    const url = window.location.href
+
+    // TODO: GENERATE UNIQUE LINK TO PUBLICLY SHARE
+
+    const url = window.location.href // random link is already generated
     navigator.clipboard.writeText(url).then(() => {
       alert('Review link copied to clipboard!')
     })
@@ -111,6 +114,9 @@ ${section.suggestions.map((s) => `- ${s}`).join('\n')}
             <div className="mb-8 flex items-center justify-between">
               <h1 className="text-3xl font-bold text-gray-900">Portfolio Review</h1>
               <div className="flex items-center gap-3">
+
+              # Button to trigger new link
+
                 <button
                   onClick={handleShare}
                   className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors"

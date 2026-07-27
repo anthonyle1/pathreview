@@ -36,3 +36,17 @@ The "done" should allow the user to physically generate a link and open it to se
 I would need to write a new test case to check for the 30-day deletion system, and unique link generation, which would be found in `tests/unit/test_review_service.py` or `frontend/src/test/setup.ts`.
 
 *Part 4* The issue provides an estimate of 5-8 hours for completing this issue, which should be ample time for Weeks 8-9. The only major thing I'm doing is working on a game jam and contributing towards other projects. Only 1 student within my section is already working on the issue. There are no open blockers or dependencies for issue #101 also.
+
+## Week 8 — Reproduction & solution planning
+
+**Reproduction commit link:** [link to commit documenting the reproduced issue]
+
+**Reproduction summary:**
+[1–2 sentences: How did you reproduce the issue? What did you observe?]
+
+**PLAN.md link:** [link to PLAN.md in your fork]
+
+**Walkthrough video (recommended):** [link to your Loom video, ≤2 min — recommended, not graded]
+
+**Blockers or open questions:**
+[Anything you're still uncertain about going into Week 9, or leave blank]
