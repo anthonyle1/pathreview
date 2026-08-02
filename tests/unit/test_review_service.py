@@ -1,6 +1,6 @@
 """Tests for review_service.py"""
 
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from unittest.mock import AsyncMock, Mock, patch
 from uuid import UUID, uuid4
 
@@ -399,7 +399,7 @@ class TestReviewSharing:
         assert review.is_public is True
         assert review.share_expires_at is not None
 
-        expected_expiry = datetime.utcnow() + timedelta(days=30)
+        expected_expiry = datetime.now(UTC) + timedelta(days=30)
         assert abs((review.share_expires_at - expected_expiry).total_seconds()) < 5
         mock_db_session.commit.assert_called_once()
 
@@ -425,7 +425,7 @@ class TestReviewSharing:
         self, mock_db_session: AsyncMock
     ) -> None:
         """Re-sharing an already-public, non-expired review must not regenerate the link."""
-        original_expiry = datetime.utcnow() + timedelta(days=10)
+        original_expiry = datetime.now(UTC) + timedelta(days=10)
         review = self._make_review(is_public=True, share_expires_at=original_expiry)
 
         with patch("core.services.review_service.get_review", new=AsyncMock(return_value=review)):
@@ -440,7 +440,7 @@ class TestReviewSharing:
         self, mock_db_session: AsyncMock
     ) -> None:
         """Re-sharing after expiry re-activates the same link with a fresh 30-day expiry."""
-        expired_at = datetime.utcnow() - timedelta(days=1)
+        expired_at = datetime.now(UTC) - timedelta(days=1)
         review = self._make_review(is_public=True, share_expires_at=expired_at)
 
         with patch("core.services.review_service.get_review", new=AsyncMock(return_value=review)):
@@ -448,7 +448,7 @@ class TestReviewSharing:
 
         assert result is review
         assert review.is_public is True
-        assert review.share_expires_at > datetime.utcnow()
+        assert review.share_expires_at > datetime.now(UTC)
         mock_db_session.commit.assert_called_once()
 
     @pytest.mark.asyncio
@@ -457,7 +457,7 @@ class TestReviewSharing:
     ) -> None:
         """A valid, unexpired public link resolves to the review."""
         review = self._make_review(
-            is_public=True, share_expires_at=datetime.utcnow() + timedelta(days=5)
+            is_public=True, share_expires_at=datetime.now(UTC) + timedelta(days=5)
         )
 
         mock_result = Mock()
@@ -488,7 +488,7 @@ class TestReviewSharing:
     ) -> None:
         """A review that exists but was never shared is not accessible publicly."""
         review = self._make_review(
-            is_public=False, share_expires_at=datetime.utcnow() + timedelta(days=5)
+            is_public=False, share_expires_at=datetime.now(UTC) + timedelta(days=5)
         )
 
         mock_result = Mock()
@@ -505,7 +505,7 @@ class TestReviewSharing:
     ) -> None:
         """Accessing an expired shared link flips is_public back to False and denies access."""
         review = self._make_review(
-            is_public=True, share_expires_at=datetime.utcnow() - timedelta(days=1)
+            is_public=True, share_expires_at=datetime.now(UTC) - timedelta(days=1)
         )
 
         mock_result = Mock()

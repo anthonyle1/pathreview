@@ -111,6 +111,10 @@ class ApiClient {
     return this.request(`/reviews/${id}/share`, { method: 'POST' })
   }
 
+  async getSharedReview(id: string): Promise<Review> {
+    return this.request(`/reviews/${id}/shared`)
+  }
+
   async listReviews(page: number = 1, pageSize: number = 10): Promise<ReviewListResponse> {
     return this.request(`/reviews?page=${page}&page_size=${pageSize}`)
   }

@@ -1,5 +1,5 @@
 import json
-from datetime import datetime, timedelta
+from datetime import UTC, datetime, timedelta
 from uuid import UUID
 
 import structlog
@@ -99,7 +99,7 @@ async def share_review(
     if not review:
         return None
 
-    now = datetime.utcnow()
+    now = datetime.now(UTC)
     if review.is_public and review.share_expires_at and review.share_expires_at > now:
         return review
 
@@ -127,7 +127,7 @@ async def get_shared_review(
     if not review or not review.is_public:
         return None
 
-    if review.share_expires_at and review.share_expires_at <= datetime.utcnow():
+    if review.share_expires_at and review.share_expires_at <= datetime.now(UTC):
         review.is_public = False
         db.add(review)
         await db.commit()
