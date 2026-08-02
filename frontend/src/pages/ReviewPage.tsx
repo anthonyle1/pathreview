@@ -29,14 +29,18 @@ export const ReviewPage: React.FC = () => {
 
   const currentReview = fullReview || statusReview
 
-  const handleShare = () => {
+  const handleShare = async () => {
+    if (!reviewId) return
 
-    // TODO: GENERATE UNIQUE LINK TO PUBLICLY SHARE
-
-    const url = window.location.href // need to generate NEW link
-    navigator.clipboard.writeText(url).then(() => {
-      alert('Review link copied to clipboard!')
-    })
+    try {
+      const { share_url, expires_at } = await apiClient.shareReview(reviewId)
+      const url = `${window.location.origin}${share_url}`
+      await navigator.clipboard.writeText(url)
+      const expiresDate = new Date(expires_at).toLocaleDateString()
+      alert(`Review link copied to clipboard! Link expires on ${expiresDate}.`)
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Failed to generate share link')
+    }
   }
 
   const handleExport = () => {
@@ -114,9 +118,6 @@ ${section.suggestions.map((s) => `- ${s}`).join('\n')}
             <div className="mb-8 flex items-center justify-between">
               <h1 className="text-3xl font-bold text-gray-900">Portfolio Review</h1>
               <div className="flex items-center gap-3">
-
-              # Button to trigger new link
-
                 <button
                   onClick={handleShare}
                   className="inline-flex items-center gap-2 px-4 py-2 border border-gray-300 hover:bg-gray-50 text-gray-700 font-medium rounded-lg transition-colors"
