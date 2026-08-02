@@ -51,3 +51,34 @@ I reproduced the issue by following the user workflow to "share" the link they p
 
 **Blockers or open questions:**
 How to handle link regeneration + privacy? 
+
+## Week 9 — Solution building & PR submission
+
+### Check-in 1 (mid-week)
+
+**Current progress:**
+I implemented the entire changes defined in PLAN.md, making new API endpoints and editing the database schema, creating a new share page accessible by any user, and implemented tests to ensure link expiration.
+
+**Next steps:**
+I'm working on doing a PR review through Slack and getting ready for submission!
+
+**Blockers:**
+[Anything slowing you down? Or leave blank.]
+
+---
+
+### Check-in 2 (end of week)
+
+**PR link:** [link to your submitted pull request]
+
+**Branch:** [the branch name you worked on, e.g. `fix/123-short-description`]
+
+**What you built:**
+[1–3 sentences summarizing what your fix does and how it works]
+
+**Tests added or updated:**
+[Which test files did you touch? What do they cover?]
+
+**Self-review confirmation:** [ ] make check passes  [ ] make test-unit passes
+
+**Draft PR feedback received from:** [name or Slack handle, or "none"]
