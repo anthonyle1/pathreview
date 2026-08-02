@@ -69,16 +69,16 @@ I'm working on doing a PR review through Slack and getting ready for submission!
 
 ### Check-in 2 (end of week)
 
-**PR link:** [link to your submitted pull request]
+**PR link:** https://github.com/ascherj/pathreview/pull/537
 
-**Branch:** [the branch name you worked on, e.g. `fix/123-short-description`]
+**Branch:** Add a "Copy link" button to share a public review summary
 
 **What you built:**
-[1–3 sentences summarizing what your fix does and how it works]
+I adjusted the Reviews database schema to include a public/private column and a date expiration column. Additionally, I created a new SharePage page as a place to display ReviewPage information. I handled link expiry after 30 days also. 
 
 **Tests added or updated:**
-[Which test files did you touch? What do they cover?]
+In `tests\unit\test_review_service.py`, I added test cases to check functionality for `share_review` and `get_shared_review` functions. It covers link generation on first share, expiry-trigger regeneration, and public-access checks.
 
-**Self-review confirmation:** [ ] make check passes  [ ] make test-unit passes
+**Self-review confirmation:** [x] make check passes  [x] make test-unit passes
 
-**Draft PR feedback received from:** [name or Slack handle, or "none"]
+**Draft PR feedback received from:** [Shawn Blackman](https://github.com/sh4wnbk) 
