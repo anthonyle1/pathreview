@@ -82,3 +82,44 @@ In `tests\unit\test_review_service.py`, I added test cases to check functionalit
 **Self-review confirmation:** [x] make check passes  [x] make test-unit passes
 
 **Draft PR feedback received from:** [Shawn Blackman](https://github.com/sh4wnbk) 
+
+## Week 10 — Iteration & reflection
+
+### Reviewer feedback
+
+**Feedback received:** [x] Yes  [ ] No — still awaiting review
+
+**Summary of feedback:**
+The reviewer commented on both pros and cons of my solution. He mentioned that it was a good idea to use uuid4 to prevent links to be guessable. Additionally, he mentioned that he appreciated including the is_public column to have expire links die at the endpoint. He mentioned that it may have been a good idea to have a seperate table for shared links rather than to include them in the review table, as an extra layer of protection since both private and public endpoints pull from the same database table. 
+
+**How you responded:**
+Since I was running low on time when submitting, I didn't have much time to address the database change. He also mentioned how I left parts of my notebook blank, so I corrected that.
+
+---
+
+### Reflection
+
+**What was harder than you expected?**
+
+I didn't anticipate the level of scope the issue handeled. I didn't really expect to change a lot of the existing API endpoints due to changes made in the database schema and building logic for new data endpoints. 
+
+
+**What did you learn about working in a large codebase?**
+
+I think it was difficult overall to be working with a lot more restrictions in place. For this project, it was the first time I was working with a test suite in a full-stack project, so some things such as checking test cases before starting to code was something I was not used to. Additionally, the review stages can add some extra time to ensure consistency with the entire project. When working on personal projects, often you're the only person or in a small group working on the code. This leads to more leniency on code style.
+
+**How did AI tools help — and where did they fall short?**
+[Where was AI assistance most useful this module? Where did you need
+to go beyond what AI could give you?]
+
+AI was really helpful with being able to identify where the issue was and what relevant parts of the code are isolated with this feature. Since I forgot to check my test cases initially, I asked Claude to compare the test suite from before and after the committed code made on my PR request. I didn't really need much help beyond what AI gave me, but having the extra oversight from the PR review was helpful.
+
+**What would you do differently if you started over?**
+
+With this issue specifically, I should've had a seperate table that was linked to the Reviews table through a foreign key. I think this would have saved on storage space long term and also helps prevent pages that do not have an existing public link to not be showcased. It also would have allowed for proper deletion of the link.
+
+With the overall process, I need to be more aware of testing and implement it more into my code to better understand how I'm isolating my code to the specific issue.
+
+**What are you most proud of from this module?**
+
+I got to work on something beyond a frontend issue! Even though the issue itself was labeled as a frontend issue, I ended up working on features beyond frontend, especially on building new API endpoints to handle sharing logic.
